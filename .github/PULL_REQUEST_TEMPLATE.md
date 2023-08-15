@@ -2,7 +2,7 @@
 <!--  Please describe which issue this Pull Request targets
 
 If there is no issue, please create one so we can look into it before approving your PR.
-You can do so here: https://github.com/Arcaniax-Development/goBrush/issues
+You can do so here: https://github.com/milkdrinkers/GoBrushContinued/issues
 -->
 
 <!-- Remove the brackets around the issue to connect your pull request with the issue it resolves -->
