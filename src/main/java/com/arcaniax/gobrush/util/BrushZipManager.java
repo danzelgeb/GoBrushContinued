@@ -32,13 +32,10 @@ import java.nio.file.Paths;
 import java.util.logging.Level;
 
 public class BrushZipManager {
-
-    private static int amountOfValidBrushes;
-
     public static void setupBrushes() {
         try {
-            amountOfValidBrushes = Session.initializeValidBrushes();
-            if (amountOfValidBrushes == 0) {
+            Session.initializeValidBrushes();
+            if (Session.getValidBrushes() == 0) {
                 GoBrushPlugin.getPlugin().getLogger().log(Level.INFO, "Downloading brushes from GitHub, please wait...");
                 try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new URL(
                     "https://github.com/Arcaniax-Development/goBrush-Assets/blob/main/brushes.zip?raw=true").openStream());
@@ -56,7 +53,7 @@ public class BrushZipManager {
                         ZipFile zipFile = new ZipFile(GoBrushPlugin.getPlugin().getDataFolder() + "/brushes/brushes.zip");
                         zipFile.extractAll(GoBrushPlugin.getPlugin().getDataFolder() + "/brushes/");
                         GoBrushPlugin.getPlugin().reloadConfig();
-                        int amountOfValidBrushes = Session.initializeValidBrushes();
+                        Session.initializeValidBrushes();
                         Session.getConfig().reload(GoBrushPlugin.getPlugin().getConfig());
                         Session.initializeBrushMenu();
                         Session.initializeBrushPlayers();
@@ -70,7 +67,7 @@ public class BrushZipManager {
                         GoBrushPlugin.getPlugin().getLogger().log(
                             Level.INFO,
                             "Registered {0} brushes. We are all set!",
-                            amountOfValidBrushes
+                            Session.getValidBrushes()
                         );
                     } catch (ZipException e) {
                         e.printStackTrace();

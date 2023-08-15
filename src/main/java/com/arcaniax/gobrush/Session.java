@@ -29,7 +29,6 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 /**
@@ -42,6 +41,7 @@ public class Session {
 
     private static Map<UUID, BrushPlayer> brushPlayers;
     private static Map<String, Brush> validBrushes;
+    private static int loadedBrushes = 0;
     private static Config config;
     private static WorldEditPlugin worldEdit;
     private static BrushMenu brushMenu;
@@ -62,28 +62,31 @@ public class Session {
      * This method initializes the HashMap containing the valid brushes. Calling
      * this method will reset the loaded brushes, only use this method when
      * enabling the plugin.
-     *
-     * @return The amount of brushes that have been initialized.
      */
-    public static int initializeValidBrushes() {
+    public static void initializeValidBrushes() {
         validBrushes = new HashMap<>();
-        AtomicInteger amountOfValidBrushes = new AtomicInteger();
+
         File dir = new File(GoBrushPlugin.getPlugin().getDataFolder() + "/brushes");
         if (!dir.exists()) {
             dir.mkdir();
-            return 0;
         }
+
         File[] brushes = dir.getAbsoluteFile().listFiles();
+
         IntStream.range(0, brushes.length).parallel().forEach(value -> {
             File file = brushes[value];
             if ((!file.getAbsoluteFile().isDirectory()) && ((file.getName().endsWith(".png")) || (file
                 .getName()
                 .endsWith(".jpg")) || (file.getName().endsWith(".jpeg")))) {
                 Session.addBrush(new Brush(file.getName()));
-                amountOfValidBrushes.getAndIncrement();
             }
         });
-        return amountOfValidBrushes.get();
+
+        loadedBrushes = validBrushes.size();
+    }
+
+    public static int getValidBrushes() {
+        return loadedBrushes;
     }
 
     /**

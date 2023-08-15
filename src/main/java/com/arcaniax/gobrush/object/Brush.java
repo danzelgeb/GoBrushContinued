@@ -41,7 +41,6 @@ public class Brush implements Comparable {
     private static final int DEFAULT_SIZE = 15;
     private final String name;
     private final BufferedImage unmodifiedPattern;
-    public int amountOfValidBrushes;
     private BufferedImage croppedPattern;
     private int size;
 
@@ -50,8 +49,7 @@ public class Brush implements Comparable {
      * default values registered on config as the default brush.
      */
     public Brush() {
-        amountOfValidBrushes = Session.initializeValidBrushes();
-        if (amountOfValidBrushes == 0) {
+        if (Session.getValidBrushes() == 0) {
             this.name = "No brushes installed";
         } else {
             this.name = DEFAULT_NAME;

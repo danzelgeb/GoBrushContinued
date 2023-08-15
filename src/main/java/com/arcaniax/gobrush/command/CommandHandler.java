@@ -101,8 +101,8 @@ public class CommandHandler implements CommandExecutor {
                     "gobrush.admin")) {
                     GoBrushPlugin.getPlugin().reloadConfig();
                     Session.getConfig().reload(GoBrushPlugin.getPlugin().getConfig());
-                    int amountOfValidBrushes = Session.initializeValidBrushes();
-                    GoBrushPlugin.getPlugin().getLogger().log(Level.INFO, "Registered {0} brushes.", amountOfValidBrushes);
+                    Session.initializeValidBrushes();
+                    GoBrushPlugin.getPlugin().getLogger().log(Level.INFO, "Registered {0} brushes.", Session.getValidBrushes());
                     Session.initializeBrushMenu();
                     Session.initializeBrushPlayers();
                     p.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&aReload Successful"));

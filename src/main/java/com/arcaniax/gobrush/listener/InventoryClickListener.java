@@ -128,7 +128,7 @@ public class InventoryClickListener implements Listener {
                 openMenu(player);
             } else if (event.getClick() == ClickType.LEFT) {
                 player.updateInventory();
-                amountOfValidBrushes = GoBrushPlugin.amountOfValidBrushes;
+                amountOfValidBrushes = Session.getValidBrushes();
                 if (amountOfValidBrushes == 0) {
                     player.sendMessage(ChatColor.translateAlternateColorCodes(
                         '&',

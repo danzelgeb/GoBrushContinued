@@ -37,7 +37,6 @@ public class GoBrushPlugin extends JavaPlugin {
 
     private static final int BSTATS_ID = 10558;
     public static GoBrushPlugin plugin;
-    public static int amountOfValidBrushes;
 
     /**
      * This method returns the main JavaPlugin instance, used for several things.
@@ -66,7 +65,7 @@ public class GoBrushPlugin extends JavaPlugin {
         Session.setWorldEdit((WorldEditPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldEdit"));
         registerListeners();
         registerCommands();
-        amountOfValidBrushes = Session.initializeValidBrushes();
+        Session.initializeValidBrushes();
         Metrics metrics = new Metrics(this, BSTATS_ID);
 
         metrics.addCustomChart(new SimplePie(
