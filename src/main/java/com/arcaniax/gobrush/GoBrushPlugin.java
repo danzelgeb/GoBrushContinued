@@ -25,7 +25,6 @@ import com.arcaniax.gobrush.listener.PlayerJoinListener;
 import com.arcaniax.gobrush.listener.PlayerQuitListener;
 import com.arcaniax.gobrush.util.BlockUtils;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
-import io.papermc.lib.PaperLib;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
@@ -35,7 +34,7 @@ import static com.arcaniax.gobrush.util.BrushZipManager.setupBrushes;
 
 public class GoBrushPlugin extends JavaPlugin {
 
-    private static final int BSTATS_ID = 10558;
+    private static final int BSTATS_ID = 19521;
     public static GoBrushPlugin plugin;
 
     /**
