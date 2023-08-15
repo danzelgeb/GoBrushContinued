@@ -1,1 +1,7 @@
-rootProject.name = "goBrush"
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = "GoBrushContinued"
