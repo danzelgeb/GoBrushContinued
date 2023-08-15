@@ -131,18 +131,18 @@ public class InventoryClickListener implements Listener {
                 amountOfValidBrushes = GoBrushPlugin.amountOfValidBrushes;
                 if (amountOfValidBrushes == 0) {
                     player.sendMessage(ChatColor.translateAlternateColorCodes(
-                            '&',
-                            "&bgoBrush> &cWARNING! The automatic brush installation failed because the server cannot connect to GitHub."
+                        '&',
+                        "&bgoBrush> &cWARNING! The automatic brush installation failed because the server cannot connect to GitHub."
                     ));
                     player.spigot().sendMessage(new ComponentBuilder("goBrush> ").color(ChatColor.AQUA)
-                            .append("Click here to download the default brushes manually.").color(ChatColor.GOLD)
-                            .event(new ClickEvent(
-                                    ClickEvent.Action.OPEN_URL,
-                                    "https://github.com/Arcaniax-Development/goBrush-Assets/blob/main/brushes.zip?raw=true"
-                            )).create());
+                        .append("Click here to download the default brushes manually.").color(ChatColor.GOLD)
+                        .event(new ClickEvent(
+                            ClickEvent.Action.OPEN_URL,
+                            "https://github.com/Arcaniax-Development/goBrush-Assets/blob/main/brushes.zip?raw=true"
+                        )).create());
                     player.sendMessage(ChatColor.translateAlternateColorCodes(
-                            '&',
-                            "&bgoBrush> &cExtract the zip into &e/plugins/goBrush/brushes"
+                        '&',
+                        "&bgoBrush> &cExtract the zip into &e/plugins/goBrush/brushes"
                     ));
                 } else {
                     Session.initializeBrushMenu();
@@ -224,7 +224,7 @@ public class InventoryClickListener implements Listener {
      *
      * @param event The InventoryClickEvent that needs to be checked.
      * @return True if the event is happening in a goBrush menu, false
-     *         otherwise.
+     * otherwise.
      */
     private boolean isInvalidInventory(InventoryClickEvent event, String inventoryName) {
         final InventoryView view = event.getView();

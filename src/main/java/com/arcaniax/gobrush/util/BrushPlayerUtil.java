@@ -46,13 +46,13 @@ public class BrushPlayerUtil {
         Vector v = player.getEyeLocation().getDirection().multiply(0.5);
 
         while (locMaterial == air
-                || (!(session.getMask() == null || session.getMask().test(Vector3
-                .at(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ())
-                .toBlockPoint())))
-                && (loc.distance(l.clone().add(0.5, 0.5, 0.5)) < ((double) brushSize / (double) 4))) {
+            || (!(session.getMask() == null || session.getMask().test(Vector3
+            .at(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ())
+            .toBlockPoint())))
+            && (loc.distance(l.clone().add(0.5, 0.5, 0.5)) < ((double) brushSize / (double) 4))) {
             loc.add(v);
             boolean newBlockPos =
-                    (loc.getBlockX() != locPrev.getBlockX() || loc.getBlockY() != locPrev.getBlockY() || loc.getBlockZ() != locPrev.getBlockZ());
+                (loc.getBlockX() != locPrev.getBlockX() || loc.getBlockY() != locPrev.getBlockY() || loc.getBlockZ() != locPrev.getBlockZ());
             if (newBlockPos) {
                 locBlock = loc.getBlock();
                 locMaterial = locBlock.getType();

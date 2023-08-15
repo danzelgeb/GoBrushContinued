@@ -23,6 +23,7 @@ public class NestedFor {
     private final int lo;
     private final int hi;
     private final IAction action;
+
     public NestedFor(int lo, int hi, IAction action) {
         this.lo = lo;
         this.hi = hi;

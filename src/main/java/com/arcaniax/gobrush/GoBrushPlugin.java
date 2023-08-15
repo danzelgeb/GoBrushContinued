@@ -30,7 +30,6 @@ import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.incendo.serverlib.ServerLib;
 
 import static com.arcaniax.gobrush.util.BrushZipManager.setupBrushes;
 
@@ -56,8 +55,8 @@ public class GoBrushPlugin extends JavaPlugin {
             Class.forName("java.awt.Graphics2D");
         } catch (ClassNotFoundException ignored) {
             getLogger().severe("Cannot locate Java AWT classes. It appears your server uses a headless Java build, where a " +
-                    "normal one is recommended. Get it here: https://adoptium.net/. goBrush will now disable itself until you " +
-                    "installed the correct Java version.");
+                "normal one is recommended. Get it here: https://adoptium.net/. goBrush will now disable itself until you " +
+                "installed the correct Java version.");
             Bukkit.getPluginManager().disablePlugin(this);
         }
         saveDefaultConfig();
@@ -67,16 +66,12 @@ public class GoBrushPlugin extends JavaPlugin {
         Session.setWorldEdit((WorldEditPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldEdit"));
         registerListeners();
         registerCommands();
-        // Check if we are in a safe environment
-        ServerLib.checkUnsafeForks();
-        ServerLib.isJavaSixteen();
-        PaperLib.suggestPaper(this);
         amountOfValidBrushes = Session.initializeValidBrushes();
         Metrics metrics = new Metrics(this, BSTATS_ID);
 
         metrics.addCustomChart(new SimplePie(
-                "worldeditImplementation",
-                () -> Bukkit.getPluginManager().getPlugin("FastAsyncWorldEdit") != null ? "FastAsyncWorldEdit" : "WorldEdit"
+            "worldeditImplementation",
+            () -> Bukkit.getPluginManager().getPlugin("FastAsyncWorldEdit") != null ? "FastAsyncWorldEdit" : "WorldEdit"
         ));
 
         try {

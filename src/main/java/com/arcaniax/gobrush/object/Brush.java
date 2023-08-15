@@ -22,7 +22,7 @@ import com.arcaniax.gobrush.GoBrushPlugin;
 import com.arcaniax.gobrush.Session;
 
 import javax.imageio.ImageIO;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -123,7 +123,7 @@ public class Brush implements Comparable {
      * Getter for the name of the brush.
      *
      * @return The identifying name of this brush. All spaces have been replaced
-     *         with underscored and the extension has been removed.
+     * with underscored and the extension has been removed.
      */
     public String getName() {
         return this.name;

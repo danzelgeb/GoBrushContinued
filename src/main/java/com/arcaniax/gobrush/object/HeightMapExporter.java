@@ -30,8 +30,7 @@ import com.sk89q.worldedit.world.World;
 import org.bukkit.entity.Player;
 
 import javax.imageio.ImageIO;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -90,7 +89,7 @@ public class HeightMapExporter {
                 BukkitPlayer bp = new BukkitPlayer(p);
                 EditSession editsession = WorldEdit.getInstance().getSessionManager().get(bp).createEditSession(bp);
                 int y = editsession.getHighestTerrainBlock(x + minX, z + minZ,
-                        BlockUtils.getWorldMin(bp.getPlayer().getLocation()), BlockUtils.getWorldMax(bp.getPlayer().getLocation())
+                    BlockUtils.getWorldMin(bp.getPlayer().getLocation()), BlockUtils.getWorldMax(bp.getPlayer().getLocation())
                 );
                 if (y > highest) {
                     highest = y;
@@ -111,7 +110,7 @@ public class HeightMapExporter {
                 BukkitPlayer bp = new BukkitPlayer(p);
                 EditSession editsession = WorldEdit.getInstance().getSessionManager().get(bp).createEditSession(bp);
                 int y = editsession.getHighestTerrainBlock(x + minX, z + minZ,
-                        BlockUtils.getWorldMin(bp.getPlayer().getLocation()), BlockUtils.getWorldMax(bp.getPlayer().getLocation())
+                    BlockUtils.getWorldMin(bp.getPlayer().getLocation()), BlockUtils.getWorldMax(bp.getPlayer().getLocation())
                 );
                 int i = (int) (((double) (y - lowest) / (double) height) * (double) 255);
                 int rgb = i; //red

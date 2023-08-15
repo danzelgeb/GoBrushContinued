@@ -41,10 +41,10 @@ public class BrushZipManager {
             if (amountOfValidBrushes == 0) {
                 GoBrushPlugin.getPlugin().getLogger().log(Level.INFO, "Downloading brushes from GitHub, please wait...");
                 try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new URL(
-                        "https://github.com/Arcaniax-Development/goBrush-Assets/blob/main/brushes.zip?raw=true").openStream());
+                    "https://github.com/Arcaniax-Development/goBrush-Assets/blob/main/brushes.zip?raw=true").openStream());
                      FileOutputStream fileOutputStream = new FileOutputStream(GoBrushPlugin
-                             .getPlugin()
-                             .getDataFolder() + "/brushes/brushes.zip")) {
+                         .getPlugin()
+                         .getDataFolder() + "/brushes/brushes.zip")) {
                     byte[] dataBuffer = new byte[1024];
                     int bytesRead;
                     while ((bytesRead = bufferedInputStream.read(dataBuffer, 0, 1024)) != -1) {
@@ -68,32 +68,32 @@ public class BrushZipManager {
                             e.printStackTrace();
                         }
                         GoBrushPlugin.getPlugin().getLogger().log(
-                                Level.INFO,
-                                "Registered {0} brushes. We are all set!",
-                                amountOfValidBrushes
+                            Level.INFO,
+                            "Registered {0} brushes. We are all set!",
+                            amountOfValidBrushes
                         );
                     } catch (ZipException e) {
                         e.printStackTrace();
                     }
                 } catch (IOException e) {
                     GoBrushPlugin.getPlugin().getLogger().log(
-                            Level.SEVERE,
-                            "Could not download brushes. Please download them manually and put them into /plugins/goBrush/brushes"
+                        Level.SEVERE,
+                        "Could not download brushes. Please download them manually and put them into /plugins/goBrush/brushes"
                     );
                     GoBrushPlugin.getPlugin().getLogger().log(
-                            Level.SEVERE,
-                            "https://github.com/Arcaniax-Development/goBrush-Assets/blob/main/brushes.zip?raw=true"
+                        Level.SEVERE,
+                        "https://github.com/Arcaniax-Development/goBrush-Assets/blob/main/brushes.zip?raw=true"
                     );
                 }
             }
         } catch (Exception ex) {
             GoBrushPlugin.getPlugin().getLogger().log(
-                    Level.SEVERE,
-                    "Could not download brushes. Please download them manually here and put them into /plugins/goBrush/brushes"
+                Level.SEVERE,
+                "Could not download brushes. Please download them manually here and put them into /plugins/goBrush/brushes"
             );
             GoBrushPlugin.getPlugin().getLogger().log(
-                    Level.SEVERE,
-                    "https://github.com/Arcaniax-Development/goBrush-Assets/blob/main/brushes.zip?raw=true"
+                Level.SEVERE,
+                "https://github.com/Arcaniax-Development/goBrush-Assets/blob/main/brushes.zip?raw=true"
             );
         }
     }
