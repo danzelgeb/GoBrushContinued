@@ -4,7 +4,7 @@ plugins {
    `java-library`
 
     id("com.github.johnrengelman.shadow") version "8.1.1" // Shades and relocates dependencies, See https://imperceptiblethoughts.com/shadow/introduction/
-    id("com.diffplug.spotless") version "6.20.0"
+    id("com.diffplug.spotless") version "6.25.0"
     id("xyz.jpenilla.run-paper") version "2.1.0" // Adds runServer and runMojangMappedServer tasks for testing
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0" // Automatic plugin.yml generation
 
@@ -36,11 +36,12 @@ dependencies {
     implementation("io.papermc:paperlib:")
     compileOnly("com.mojang:authlib:1.5.25")
 
-    implementation(platform("com.intellectualsites.bom:bom-newest:1.34"))
+    implementation(platform("com.intellectualsites.bom:bom-newest:1.40"))
     compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Core")
     compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Bukkit") { isTransitive = false }
 
     implementation("net.lingala.zip4j:zip4j:2.11.5")
+    implementation("dev.notmyfault.serverlib:ServerLib")
     implementation("org.bstats:bstats-bukkit:3.0.2")
     implementation("org.bstats:bstats-base:3.0.2")
 }
@@ -74,6 +75,9 @@ tasks {
         reloc("net.lingala.zip4j", "zip4j")
         reloc("org.bstats", "metrics")
         reloc("io.papermc.lib", "paperlib")
+        relocate("org.incendo.serverlib", "com.arcaniax.gobrush.serverlib") {
+            include(dependency("dev.notmyfault.serverlib:ServerLib:2.3.4"))
+        }
     }
 
     runServer {
@@ -143,4 +147,3 @@ spotless {
         target("**/*.java")
     }
 }
-
